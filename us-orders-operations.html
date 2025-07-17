@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders and Operations - US Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.5;
+            color: #323130;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 25%, #2E86AB 50%, #1E6091 75%, #0F4C75 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(74, 144, 226, 0.25);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #ffffff, #e6f3ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, #e6f3ff);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(74, 144, 226, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #2E86AB 0%, #4A90E2 50%, #357ABD 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            position: relative;
+        }
+
+        .hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: #64748b;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 48px 40px;
+            margin-bottom: 80px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-category {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2E86AB 0%, #4A90E2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.1);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(74, 144, 226, 0.05);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: #64748b;
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+
+        .faq-answer {
+            padding: 0 28px 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #64748b;
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(135deg);
+        }
+
+        .faq-answer ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 12px;
+        }
+
+        .faq-answer strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .faq-container {
+                padding: 32px 24px;
+            }
+
+            .faq-question {
+                padding: 20px 24px;
+                font-size: 16px;
+            }
+
+            .faq-answer {
+                padding: 0 24px 24px;
+                font-size: 15px;
+            }
+
+            .header-content {
+                padding: 0 16px;
+            }
+
+            .main-content {
+                padding: 0 16px;
+            }
+
+            .nav-buttons {
+                gap: 12px;
+            }
+
+            .nav-btn {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero {
+                padding: 40px 0 30px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">POS Hardware Support</a>
+            <div class="nav-buttons">
+                <a href="us.html" class="nav-btn">Back to US</a>
+                <a href="index.html" class="nav-btn">Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Orders and Operations</h1>
+            <p>Comprehensive guide for managing POS hardware orders and operational procedures</p>
+        </section>
+
+        <!-- FAQ Container -->
+        <div class="faq-container">
+            <div class="faq-section">
+                <h3 class="faq-category">Order Management</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How do I place a new POS hardware order?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To place a new POS hardware order:</p>
+                        <ul>
+                            <li><strong>Access the ordering portal</strong> through your merchant dashboard</li>
+                            <li><strong>Select hardware type</strong> (Ingenico, Verifone, or other supported models)</li>
+                            <li><strong>Specify quantity</strong> and delivery location details</li>
+                            <li><strong>Choose deployment timeline</strong> and any special requirements</li>
+                            <li><strong>Submit order</strong> and receive confirmation with tracking information</li>
+                        </ul>
+                        <p>Orders are typically processed within 24-48 hours and you'll receive email updates throughout the process.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What information is required for bulk orders?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For bulk orders (10+ terminals), please provide:</p>
+                        <ul>
+                            <li><strong>Site survey details</strong> including number of locations</li>
+                            <li><strong>Network infrastructure</strong> specifications at each site</li>
+                            <li><strong>Deployment schedule</strong> with preferred installation dates</li>
+                            <li><strong>Technical contact</strong> information for each location</li>
+                            <li><strong>Special requirements</strong> such as mounting preferences or custom configurations</li>
+                        </ul>
+                        <p>Bulk orders receive priority processing and dedicated project management support.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How can I modify or cancel an existing order?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Order modifications depend on the current status:</p>
+                        <ul>
+                            <li><strong>Pending orders</strong> can be modified or cancelled without fees</li>
+                            <li><strong>Processing orders</strong> may incur modification fees</li>
+                            <li><strong>Shipped orders</strong> require return authorization for changes</li>
+                        </ul>
+                        <p>Contact our support team immediately at <strong>1-800-POS-HELP</strong> for urgent modifications.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3 class="faq-category">Operational Procedures</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is the standard deployment timeline?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Standard deployment timeline:</p>
+                        <ul>
+                            <li><strong>Order processing:</strong> 1-2 business days</li>
+                            <li><strong>Hardware preparation:</strong> 2-3 business days</li>
+                            <li><strong>Shipping:</strong> 3-5 business days (standard) or 1-2 days (expedited)</li>
+                            <li><strong>Installation scheduling:</strong> Within 5 business days of delivery</li>
+                            <li><strong>Configuration and testing:</strong> 1-2 hours on-site</li>
+                        </ul>
+                        <p>Total timeline: <strong>7-12 business days</strong> from order to go-live.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What happens during the installation process?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our certified technicians will:</p>
+                        <ul>
+                            <li><strong>Unpack and inspect</strong> all hardware components</li>
+                            <li><strong>Configure network settings</strong> and establish secure connections</li>
+                            <li><strong>Install payment applications</strong> and configure merchant settings</li>
+                            <li><strong>Test all payment methods</strong> including chip, contactless, and PIN</li>
+                            <li><strong>Train your staff</strong> on basic operations and troubleshooting</li>
+                            <li><strong>Provide documentation</strong> and emergency contact information</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How do I handle emergency hardware failures?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For emergency hardware failures:</p>
+                        <ul>
+                            <li><strong>Call our 24/7 emergency line:</strong> 1-800-POS-911</li>
+                            <li><strong>Provide your merchant ID</strong> and describe the issue</li>
+                            <li><strong>Follow remote troubleshooting</strong> steps provided by our technician</li>
+                            <li><strong>If unresolvable,</strong> emergency replacement hardware will be dispatched</li>
+                            <li><strong>Same-day replacement</strong> available in major metropolitan areas</li>
+                        </ul>
+                        <p>Emergency replacements are typically delivered within 4-6 hours during business hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3 class="faq-category">Quality Assurance</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What quality checks are performed before deployment?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Every terminal undergoes comprehensive testing:</p>
+                        <ul>
+                            <li><strong>Hardware diagnostics</strong> including screen, keypad, and connectivity tests</li>
+                            <li><strong>Software validation</strong> ensuring latest firmware and security patches</li>
+                            <li><strong>Payment processing tests</strong> with test cards for all supported methods</li>
+                            <li><strong>Network security verification</strong> including encryption and certificate validation</li>
+                            <li><strong>Compliance certification</strong> for PCI DSS and EMV standards</li>
+                        </ul>
+                        <p>All tests are documented and included with your deployment package.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 POS Hardware Support. All rights reserved. | 24/7 Enterprise Support</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = element.nextElementSibling;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.faq-answer').classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                faqItem.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

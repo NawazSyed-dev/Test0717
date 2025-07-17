@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders and Operations - Canada Support</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.5;
+            color: #323130;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #4A90E2 0%, #357ABD 25%, #2E86AB 50%, #1E6091 75%, #0F4C75 100%);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(74, 144, 226, 0.25);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(45deg, #ffffff, #e6f3ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffffff, #e6f3ff);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .nav-btn:hover::before {
+            left: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            letter-spacing: -1.5px;
+            position: relative;
+        }
+
+        .hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: #64748b;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 48px 40px;
+            margin-bottom: 80px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-category {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.1);
+        }
+
+        .faq-question {
+            padding: 24px 28px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .faq-toggle {
+            font-size: 20px;
+            color: #64748b;
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+
+        .faq-answer {
+            padding: 0 28px 28px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #64748b;
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(135deg);
+        }
+
+        .faq-answer ul {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 12px;
+        }
+
+        .faq-answer strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(248, 250, 252, 0.8);
+            backdrop-filter: blur(20px);
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .footer p {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .faq-container {
+                padding: 32px 24px;
+            }
+
+            .faq-question {
+                padding: 20px 24px;
+                font-size: 16px;
+            }
+
+            .faq-answer {
+                padding: 0 24px 24px;
+                font-size: 15px;
+            }
+
+            .header-content {
+                padding: 0 16px;
+            }
+
+            .main-content {
+                padding: 0 16px;
+            }
+
+            .nav-buttons {
+                gap: 12px;
+            }
+
+            .nav-btn {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero {
+                padding: 40px 0 30px;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">POS Hardware Support</a>
+            <div class="nav-buttons">
+                <a href="canada.html" class="nav-btn">Back to Canada</a>
+                <a href="index.html" class="nav-btn">Home</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Orders and Operations</h1>
+            <p>Comprehensive guide for managing POS hardware orders and operational procedures in Canada</p>
+        </section>
+
+        <!-- FAQ Container -->
+        <div class="faq-container">
+            <div class="faq-section">
+                <h3 class="faq-category">Order Management</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How do I place a new POS hardware order in Canada?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To place a new POS hardware order in Canada:</p>
+                        <ul>
+                            <li><strong>Access the Canadian ordering portal</strong> through your merchant dashboard</li>
+                            <li><strong>Select hardware type</strong> (Ingenico, Verifone, or other Health Canada approved models)</li>
+                            <li><strong>Specify quantity and province</strong> for proper tax calculation</li>
+                            <li><strong>Choose bilingual configuration</strong> (English/French) if required</li>
+                            <li><strong>Submit order</strong> and receive confirmation with Canada Post tracking</li>
+                        </ul>
+                        <p>Orders are processed within 24-48 hours with email updates in English and French.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What are the provincial tax considerations for orders?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Provincial tax requirements vary by location:</p>
+                        <ul>
+                            <li><strong>HST provinces</strong> (ON, NB, NS, NL, PE): 13-15% HST applies</li>
+                            <li><strong>GST + PST provinces</strong> (BC, SK, MB, QC): 5% GST + provincial PST</li>
+                            <li><strong>GST only</strong> (AB, NT, NU, YT): 5% GST only</li>
+                            <li><strong>Tax exemptions</strong> available for registered charities and government entities</li>
+                        </ul>
+                        <p>All pricing includes applicable taxes and duties for Canadian delivery.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How do cross-border shipments work?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For cross-border shipments:</p>
+                        <ul>
+                            <li><strong>Customs documentation</strong> is handled automatically</li>
+                            <li><strong>Duty and brokerage fees</strong> are pre-calculated and included</li>
+                            <li><strong>CBSA clearance</strong> typically adds 1-2 business days</li>
+                            <li><strong>Tracking updates</strong> provided through customs process</li>
+                        </ul>
+                        <p>All hardware meets Industry Canada certification requirements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3 class="faq-category">Canadian Compliance</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What are the bilingual requirements for POS terminals?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Bilingual requirements depend on your location:</p>
+                        <ul>
+                            <li><strong>Quebec:</strong> French language display required by law</li>
+                            <li><strong>New Brunswick:</strong> Bilingual options recommended</li>
+                            <li><strong>Federal institutions:</strong> Must support both official languages</li>
+                            <li><strong>Other provinces:</strong> English default with French option available</li>
+                        </ul>
+                        <p>All terminals can be configured for bilingual operation during setup.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How do I configure Interac debit processing?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Interac debit configuration includes:</p>
+                        <ul>
+                            <li><strong>Interac certification</strong> verification for your merchant account</li>
+                            <li><strong>Network routing setup</strong> for Interac transaction processing</li>
+                            <li><strong>PIN verification</strong> and transaction limit configuration</li>
+                            <li><strong>Contactless Interac Flash</strong> setup for tap payments</li>
+                            <li><strong>Testing procedures</strong> with Interac test cards</li>
+                        </ul>
+                        <p>Our technicians handle all Interac-specific configurations during installation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-section">
+                <h3 class="faq-category">Support and Maintenance</h3>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What are the support hours for Canadian customers?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Canadian support coverage:</p>
+                        <ul>
+                            <li><strong>24/7 Emergency Line:</strong> 1-800-POS-HELP (available in English and French)</li>
+                            <li><strong>Business Hours:</strong> 6 AM - 10 PM EST (covers all time zones)</li>
+                            <li><strong>French Support:</strong> Available during Quebec business hours</li>
+                            <li><strong>Holiday Coverage:</strong> Includes Canadian statutory holidays</li>
+                        </ul>
+                        <p>Emergency replacement hardware available in major Canadian cities within 4-6 hours.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How do warranty claims work in Canada?
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Canadian warranty process:</p>
+                        <ul>
+                            <li><strong>Standard warranty:</strong> 3 years parts and labor</li>
+                            <li><strong>Extended warranty:</strong> Available up to 5 years</li>
+                            <li><strong>Return shipping:</strong> Prepaid Canada Post labels provided</li>
+                            <li><strong>Replacement timeline:</strong> 3-5 business days within Canada</li>
+                            <li><strong>Consumer protection:</strong> Complies with provincial consumer protection laws</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 POS Hardware Support. All rights reserved. | 24/7 Enterprise Support</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const answer = element.nextElementSibling;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+                item.querySelector('.faq-answer').classList.remove('active');
+            });
+            
+            // Toggle current item
+            if (!isActive) {
+                faqItem.classList.add('active');
+                answer.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
